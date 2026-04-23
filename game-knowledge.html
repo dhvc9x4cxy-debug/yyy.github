@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>梨园知识殿堂 · 挑战题库解析 | 梨园幻境</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/new_file.css">
+</head>
+<body class="knowledge-page">
+    <!-- ========== 导航栏 ========== -->
+    <div class="navbar">
+        <div class="container nav-flex">
+            <div class="logo"><i class="fas fa-mask"></i> 梨园幻境</div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="visual.html"><i class="fas fa-palette"></i> 赏·国色</a>
+                <a href="audio.html"><i class="fas fa-music"></i> 听·韵事</a>
+                <a href="game.html" class="active"><i class="fas fa-gamepad"></i> 玩·趣魂</a>
+                <a href="knowledge.html"><i class="fas fa-book-open"></i> 知·文脉</a>
+                <a href="theater.html"><i class="fas fa-ticket-alt"></i> 约·梨园</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 顶部横幅 ========== -->
+    <div class="knowledge-banner">
+        <div class="banner-content">
+            <div class="banner-icon"><i class="fas fa-scroll"></i></div>
+            <h1 class="banner-title">梨园知识殿堂</h1>
+            <p class="banner-subtitle">挑战题库全解析 · 助你十连问满分通关</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 返回链接 -->
+        <a href="game.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> 返回挑战页面
+        </a>
+
+        <!-- ========== 分类导航卡片 ========== -->
+        <div class="category-nav">
+            <a href="#error-prone" class="category-card">
+                <span class="category-icon">⚠️</span>
+                <span class="category-name">易错题</span>
+                <span class="category-count">高频错点</span>
+            </a>
+            <a href="#roles-detail" class="category-card">
+                <span class="category-icon">🎭</span>
+                <span class="category-name">行当辨析</span>
+                <span class="category-count">角色分类</span>
+            </a>
+            <a href="#masks-detail" class="category-card">
+                <span class="category-icon">🎨</span>
+                <span class="category-name">脸谱辨识</span>
+                <span class="category-count">色彩含义</span>
+            </a>
+            <a href="#repertoire-detail" class="category-card">
+                <span class="category-icon">🎪</span>
+                <span class="category-name">剧目考点</span>
+                <span class="category-count">经典台词</span>
+            </a>
+            <a href="#technique-detail" class="category-card">
+                <span class="category-icon">🤸</span>
+                <span class="category-name">特技功法</span>
+                <span class="category-count">表演绝活</span>
+            </a>
+            <a href="#exam-tips" class="category-card">
+                <span class="category-icon">📝</span>
+                <span class="category-name">答题技巧</span>
+                <span class="category-count">通关秘籍</span>
+            </a>
+        </div>
+
+        <!-- ========== 趣味知识横幅 ========== -->
+        <div class="fun-fact-banner">
+            <div class="fun-fact-icon">💡</div>
+            <div class="fun-fact-text">
+                <h4>破圈小贴士</h4>
+                <p id="randomFunFact">京剧十连问涵盖行当、脸谱、名家、剧目、乐器、历史六大板块，每题10分，答错即结束。掌握以下知识点，助你满分通关！</p>
+            </div>
+        </div>
+
+        <!-- ========== 易错题重点解析 ========== -->
+        <h2 class="detail-section-title section-anchor" id="error-prone">
+            <i class="fas fa-exclamation-triangle"></i> 高频易错题 · 重点辨析
+        </h2>
+        <p class="detail-section-desc">以下是在挑战中最容易出错的题目类型，掌握这些辨析要点，避开陷阱。</p>
+
+        <div class="roles-detail-grid">
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle sheng">⚠️</div>
+                    <div>
+                        <h4 class="role-detail-name">旦角不包括花脸</h4>
+                        <span class="role-detail-eng">易错指数：★★★★★</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">题目："京剧中的'旦'角不包括以下哪一类？" 正确选项是"花脸"。很多新手容易混淆，花脸属于「净」行，而青衣、花旦、武旦都属于「旦」行。记住：旦=女角，净=花脸。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">青衣→旦</span>
+                    <span class="subtype-tag">花旦→旦</span>
+                    <span class="subtype-tag">花脸→净</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle jing">⚠️</div>
+                    <div>
+                        <h4 class="role-detail-name">大锣属于武场</h4>
+                        <span class="role-detail-eng">易错指数：★★★★☆</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">题目："京剧'文场'三大件不包括以下哪一项？" 答案是"大锣"。文场三大件是京胡、月琴、三弦，都是旋律乐器。大锣是打击乐器，属于武场。记住：有弦的是文场，敲打的是武场。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">京胡→文场</span>
+                    <span class="subtype-tag">月琴→文场</span>
+                    <span class="subtype-tag">大锣→武场</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle dan">⚠️</div>
+                    <div>
+                        <h4 class="role-detail-name">马连良是老生</h4>
+                        <span class="role-detail-eng">易错指数：★★★★☆</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">题目："下列哪位是著名的'老生'演员？" 答案是"马连良"。梅兰芳、程砚秋、荀慧生都是四大名旦（旦角），只有马连良是四大须生之一（老生）。须生=老生，戴髯口的男性角色。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">梅兰芳→旦角</span>
+                    <span class="subtype-tag">马连良→老生</span>
+                    <span class="subtype-tag">程砚秋→旦角</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle chou">⚠️</div>
+                    <div>
+                        <h4 class="role-detail-name">丑角白块在鼻梁</h4>
+                        <span class="role-detail-eng">易错指数：★★★☆☆</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">题目："'丑'角脸上的白色块通常画在哪里？" 答案是"鼻梁"。丑角鼻梁上画白色豆腐块，因此俗称「小花脸」。注意区分：净角是整脸涂色的大花脸，丑角只是鼻梁一小块白色。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">鼻梁白块→丑</span>
+                    <span class="subtype-tag">整脸涂色→净</span>
+                    <span class="subtype-tag">丑=小花脸</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 行当辨析 ========== -->
+        <h2 class="detail-section-title section-anchor" id="roles-detail">
+            <i class="fas fa-users"></i> 行当辨析 · 考题中的角色分类
+        </h2>
+        <p class="detail-section-desc">挑战中涉及行当的题目主要考察角色归属，以下是根据题库整理的行当分类要点。</p>
+
+        <div class="roles-detail-grid">
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle sheng">🎭</div>
+                    <div>
+                        <h4 class="role-detail-name">生行考点</h4>
+                        <span class="role-detail-eng">男性角色 · 须生/小生/武生</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">考题中常出现"老生"、"须生"等概念。马连良是四大须生之一，周信芳创立麒派老生艺术。注意区分：老生戴髯口唱念做打并重，小生不戴髯口声音尖亮。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">马连良</span>
+                    <span class="subtype-tag">周信芳</span>
+                    <span class="subtype-tag">四大须生</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle dan">👘</div>
+                    <div>
+                        <h4 class="role-detail-name">旦行考点</h4>
+                        <span class="role-detail-eng">女性角色 · 青衣/花旦/武旦</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">考题重点：旦角不包括花脸（花脸是净行）。旦角细分：青衣端庄稳重（如《贵妃醉酒》杨贵妃），花旦活泼可爱，刀马旦/武旦擅长武打。梅兰芳是旦角艺术的巅峰代表。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">梅兰芳</span>
+                    <span class="subtype-tag">青衣</span>
+                    <span class="subtype-tag">花旦</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle jing">👹</div>
+                    <div>
+                        <h4 class="role-detail-name">净行考点</h4>
+                        <span class="role-detail-eng">花脸角色 · 铜锤/架子/武花脸</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">考题中"花脸"即指净行。花脸以脸谱为标志，曹操的白脸、包拯的黑脸、关羽的红脸都属于净行。记住口诀：花脸=净行，脸谱=性格符号。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">花脸=净</span>
+                    <span class="subtype-tag">脸谱</span>
+                    <span class="subtype-tag">铜锤花脸</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle chou">🤡</div>
+                    <div>
+                        <h4 class="role-detail-name">丑行考点</h4>
+                        <span class="role-detail-eng">喜剧角色 · 文丑/武丑</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">考题关键词：鼻梁白块、小花脸。丑角鼻梁画白色豆腐块，分文丑和武丑。文丑以念白为主（如《群英会》蒋干），武丑擅长翻打。《群英会》蒋干是文丑代表。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">鼻梁白块</span>
+                    <span class="subtype-tag">文丑蒋干</span>
+                    <span class="subtype-tag">武丑</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 脸谱辨识 ========== -->
+        <h2 class="detail-section-title section-anchor" id="masks-detail">
+            <i class="fas fa-palette"></i> 脸谱辨识 · 考题色彩速记
+        </h2>
+        <p class="detail-section-desc">挑战中脸谱题主要考察色彩与性格的对应关系，以下速记口诀助你一秒选对。</p>
+
+        <div class="mask-colors-detail-grid">
+            <div class="mask-color-detail-card">
+                <div class="color-circle-sample red"></div>
+                <div class="mask-color-name">红色 = 忠勇</div>
+                <div class="mask-color-meaning">代表：关羽</div>
+                <div class="mask-color-example">口诀：红脸关公最忠义</div>
+            </div>
+            <div class="mask-color-detail-card">
+                <div class="color-circle-sample black"></div>
+                <div class="mask-color-name">黑色 = 刚直</div>
+                <div class="mask-color-meaning">代表：包拯</div>
+                <div class="mask-color-example">口诀：黑脸包公最公正</div>
+            </div>
+            <div class="mask-color-detail-card">
+                <div class="color-circle-sample white"></div>
+                <div class="mask-color-name">白色 = 奸诈</div>
+                <div class="mask-color-meaning">代表：曹操</div>
+                <div class="mask-color-example">口诀：白脸曹操最多疑</div>
+            </div>
+            <div class="mask-color-detail-card">
+                <div class="color-circle-sample gold"></div>
+                <div class="mask-color-name">金色 = 神佛</div>
+                <div class="mask-color-meaning">代表：孙悟空</div>
+                <div class="mask-color-example">口诀：金脸猴王神通大</div>
+            </div>
+        </div>
+
+        <div style="background: #fdfaf5; border-radius: 20px; padding: 20px; margin-bottom: 40px; border: 1px solid #e5d5be;">
+            <p style="color: #5a4a3a; margin: 0; font-size: 0.95rem; line-height: 1.8;">
+                <strong>📌 考题速记口诀：</strong><br>
+                红忠黑直白奸诈，金色神佛蓝勇猛。<br>
+                绿暴黄残紫刚正，脸谱色彩记心间。<br>
+                考题常见问："白色象征什么？"→ 奸诈（曹操）<br>
+                "孙悟空脸谱什么颜色？"→ 金色（神佛类）
+            </p>
+        </div>
+
+        <!-- ========== 剧目考点 ========== -->
+        <h2 class="detail-section-title section-anchor" id="repertoire-detail">
+            <i class="fas fa-theater-masks"></i> 剧目考点 · 经典台词与名段
+        </h2>
+        <p class="detail-section-desc">挑战中剧目题常考"哪句台词出自哪部戏"，以下为必考剧目速查表。</p>
+
+        <div class="repertoire-detail-grid">
+            <div class="repertoire-detail-card">
+                <div class="repertoire-card-header">
+                    <div class="repertoire-card-icon">🎭</div>
+                    <h4 class="repertoire-card-title">《贵妃醉酒》</h4>
+                </div>
+                <div class="repertoire-card-body">
+                    <p class="repertoire-card-desc"><strong>考题关联：</strong>"《贵妃醉酒》中杨贵妃由哪位大师发扬光大？"→ 梅兰芳。梅派代表剧目，杨贵妃从期待到失落，梅兰芳加入"卧鱼"身段。</p>
+                    <div class="repertoire-card-tags">
+                        <span class="subtype-tag">梅兰芳</span>
+                        <span class="subtype-tag">卧鱼身段</span>
+                        <span class="subtype-tag">梅派代表</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="repertoire-detail-card">
+                <div class="repertoire-card-header">
+                    <div class="repertoire-card-icon">🗡️</div>
+                    <h4 class="repertoire-card-title">《霸王别姬》</h4>
+                </div>
+                <div class="repertoire-card-body">
+                    <p class="repertoire-card-desc"><strong>考题关联：</strong>"以下哪部戏讲述'霸王别姬'故事？"→《霸王别姬》。项羽被困垓下，虞姬舞剑自刎。剑舞是京剧经典场面。</p>
+                    <div class="repertoire-card-tags">
+                        <span class="subtype-tag">虞姬剑舞</span>
+                        <span class="subtype-tag">垓下之围</span>
+                        <span class="subtype-tag">梅派剧目</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="repertoire-detail-card">
+                <div class="repertoire-card-header">
+                    <div class="repertoire-card-icon">🎪</div>
+                    <h4 class="repertoire-card-title">《甘露寺》</h4>
+                </div>
+                <div class="repertoire-card-body">
+                    <p class="repertoire-card-desc"><strong>考题关联：</strong>"劝千岁杀字休出口"出自哪部剧？"→《甘露寺》。乔玄劝孙权不要杀刘备，是马派老生（马连良）著名唱段。</p>
+                    <div class="repertoire-card-tags">
+                        <span class="subtype-tag">马连良</span>
+                        <span class="subtype-tag">马派唱腔</span>
+                        <span class="subtype-tag">三国戏</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #fdfaf5; border-radius: 20px; padding: 20px; margin-bottom: 40px; border: 1px solid #e5d5be;">
+            <p style="color: #5a4a3a; margin: 0; font-size: 0.95rem; line-height: 1.8;">
+                <strong>📌 剧目台词速记：</strong><br>
+                "劝千岁杀字休出口" → 《甘露寺》· 乔玄（马派）<br>
+                "海岛冰轮初转腾" → 《贵妃醉酒》· 杨贵妃（梅派）<br>
+                "力拔山兮气盖世" → 《霸王别姬》· 项羽<br>
+                《空城计》《借东风》《捉放曹》→ 均为三国题材剧目
+            </p>
+        </div>
+
+        <!-- ========== 特技功法 ========== -->
+        <h2 class="detail-section-title section-anchor" id="technique-detail">
+            <i class="fas fa-person-walking"></i> 特技功法 · 表演绝活考点
+        </h2>
+        <p class="detail-section-desc">挑战中特技题主要考察"摔僵尸"、"翎子功"等专业术语，以下为必考特技详解。</p>
+
+        <div class="roles-detail-grid">
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle sheng">🤸</div>
+                    <div>
+                        <h4 class="role-detail-name">毯子功</h4>
+                        <span class="role-detail-eng">翻、滚、摔、跌</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc"><strong>考题：</strong>"京剧中的'摔僵尸'属于哪种表演特技？"→ 毯子功。毯子功是演员在毯子上进行翻、滚、摔、跌等技巧的总称。摔僵尸是其中高难度动作，身体直挺后倒。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">摔僵尸</span>
+                    <span class="subtype-tag">翻跟头</span>
+                    <span class="subtype-tag">跌扑</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle jing">🪶</div>
+                    <div>
+                        <h4 class="role-detail-name">翎子功</h4>
+                        <span class="role-detail-eng">掏翎、衔翎、甩翎</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc"><strong>考题：</strong>"演员甩动头顶的翎子称为什么？"→ 翎子功。雉尾生（如吕布、周瑜）头顶两根长翎，通过掏、衔、甩等动作表现人物情绪。吕布、周瑜是翎子功代表角色。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">吕布</span>
+                    <span class="subtype-tag">周瑜</span>
+                    <span class="subtype-tag">雉尾生</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle dan">🎀</div>
+                    <div>
+                        <h4 class="role-detail-name">其他特技</h4>
+                        <span class="role-detail-eng">把子功/水袖功/帽翅功</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc"><strong>考题区分：</strong>把子功=兵器对打，水袖功=甩动长袖，帽翅功=晃动纱帽翅，髯口功=抖动胡须。考题中常将翎子功与其他功法混淆，注意区分：翎子=头顶长羽。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">把子功→兵器</span>
+                    <span class="subtype-tag">水袖功→长袖</span>
+                    <span class="subtype-tag">翎子功→长羽</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== 答题技巧 ========== -->
+        <h2 class="detail-section-title section-anchor" id="exam-tips">
+            <i class="fas fa-lightbulb"></i> 答题技巧 · 满分通关秘籍
+        </h2>
+        <p class="detail-section-desc">掌握以下答题策略，在十连问挑战中稳操胜券。</p>
+
+        <div class="roles-detail-grid">
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle sheng">🎯</div>
+                    <div>
+                        <h4 class="role-detail-name">排除法优先</h4>
+                        <span class="role-detail-eng">技巧一</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">如遇"不包括"类题目，先找出最不可能的选项。例如"旦角不包括"→ 花脸明显不是女性角色，直接排除其他三个旦角子类。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">找矛盾项</span>
+                    <span class="subtype-tag">分类对比</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle dan">🔑</div>
+                    <div>
+                        <h4 class="role-detail-name">关键词定位</h4>
+                        <span class="role-detail-eng">技巧二</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">题目中看到"老生"→ 找马连良；看到"梅派"→ 找梅兰芳；看到"劝千岁"→ 找《甘露寺》；看到"白色脸谱"→ 找奸诈/曹操。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">老生→马连良</span>
+                    <span class="subtype-tag">白色→奸诈</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle jing">⚡</div>
+                    <div>
+                        <h4 class="role-detail-name">善用小抄次数</h4>
+                        <span class="role-detail-eng">技巧三</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc">3次刷新小抄是宝贵资源。建议在脸谱色彩题和历史年代题（如1790年四大徽班进京）使用，这类题最容易因记混而答错。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">年代题用</span>
+                    <span class="subtype-tag">色彩题用</span>
+                </div>
+            </div>
+
+            <div class="role-detail-card">
+                <div class="role-detail-header">
+                    <div class="role-icon-circle chou">📋</div>
+                    <div>
+                        <h4 class="role-detail-name">必背数字</h4>
+                        <span class="role-detail-eng">技巧四</span>
+                    </div>
+                </div>
+                <p class="role-detail-desc"><strong>关键数字速记：</strong>1790年（四大徽班进京）、四大名旦（梅程荀尚）、四大须生（马谭杨奚）、文场三大件（京胡月琴三弦）、丑角白块在鼻梁、金色脸谱=孙悟空。</p>
+                <div class="subtype-tags">
+                    <span class="subtype-tag">1790年</span>
+                    <span class="subtype-tag">四大名旦</span>
+                    <span class="subtype-tag">文场三大件</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部返回按钮 -->
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="game.html" class="back-link" style="font-size: 1.1rem; padding: 14px 32px;">
+                <i class="fas fa-gamepad"></i> 返回挑战页面，检验学习成果
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>梨园知识殿堂 | 挑战题库全解析 · 涵盖行当/脸谱/剧目/特技/答题技巧 | 助你十连问满分通关</p>
+    </footer>
+
+    <!-- 随机趣味知识切换 -->
+    <script>
+        const funFacts = [
+            "💡 京剧十连问涵盖行当、脸谱、名家、剧目、乐器、历史六大板块，每题10分，答错即结束。掌握本页知识点，助你满分通关！",
+            "🎯 高频易错：旦角不包括花脸！花脸属于「净」行。青衣、花旦、武旦才是旦角子类。",
+            "🎨 脸谱速记：红忠（关羽）、黑直（包拯）、白奸（曹操）、金神（孙悟空）。",
+            "🎪 台词溯源：「劝千岁杀字休出口」出自《甘露寺》，马连良的经典唱段。",
+            "🥁 乐器辨析：文场三大件=京胡+月琴+三弦；武场核心=板鼓。大锣属于武场！"
+        ];
+        
+        let currentFactIndex = 0;
+        const factElement = document.getElementById('randomFunFact');
+        
+        function rotateFunFact() {
+            currentFactIndex = (currentFactIndex + 1) % funFacts.length;
+            factElement.textContent = funFacts[currentFactIndex];
+        }
+        
+        // 每8秒切换一条趣味知识
+        setInterval(rotateFunFact, 8000);
+    </script>
+</body>
+</html>

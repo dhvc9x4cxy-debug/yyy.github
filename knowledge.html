@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梨园幻境 · 知·文脉 | 京剧历史与名家图谱</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/new_file.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo"><i class="fas fa-mask"></i> 梨园幻境</div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="visual.html"><i class="fas fa-palette"></i> 赏·国色</a>
+            <a href="audio.html"><i class="fas fa-music"></i> 听·韵事</a> 
+            <a href="game.html"><i class="fas fa-gamepad"></i> 玩·趣魂</a>
+            <a href="knowledge.html" class="active"><i class="fas fa-book-open"></i> 知·文脉</a>
+            <a href="theater.html"><i class="fas fa-ticket-alt"></i> 约·梨园</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- 京剧简史 · 可视化时间轴（丰富版） -->
+    <h2 class="section-title"><i class="fas fa-timeline"></i> 📜 京剧简史 · 二百年风华可视化时间轴</h2>
+    <div class="timeline-container">
+        <div class="timeline-progress" id="timelineProgress"></div>
+        <div class="timeline-items" id="timeline"></div>
+        <div class="timeline-controls">
+            <button id="timelinePrevBtn" class="btn-small"><i class="fas fa-chevron-left"></i> 上一阶段</button>
+            <span id="timelineIndicator">1 / 9</span>
+            <button id="timelineNextBtn" class="btn-small">下一阶段 <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <!-- 名家传承图谱（增强版） -->
+        <div class="col">
+            <h3><i class="fas fa-project-diagram"></i> 名家传承图谱 · 梨园血脉</h3>
+            <div class="genealogy-tree">
+                <div class="tree-node root">程长庚<br><small>京剧鼻祖</small></div>
+                <div class="tree-arrow">⬇️</div>
+                <div class="tree-node">谭鑫培<br><small>谭派创始人</small></div>
+                <div class="tree-arrow">⬇️</div>
+                <div class="tree-node">梅兰芳<br><small>梅派宗师</small></div>
+                <div class="tree-branch">
+                    <div class="tree-node child">李世芳<br><small>梅派传人</small></div>
+                    <div class="tree-node child">张君秋<br><small>张派创始人</small></div>
+                </div>
+                <div class="tree-arrow">⬇️</div>
+                <div class="tree-node">当代传承者<br><small>杜镇杰、于魁智、李胜素...</small></div>
+                <div class="tree-arrow">⬇️</div>
+                <div class="tree-node highlight">京剧网红传承人<br><small>短视频破圈先锋</small></div>
+            </div>
+        </div>
+        
+        <!-- 四功五法 + 当代破圈数据 -->
+        <div class="col">
+            <h3><i class="fas fa-gem"></i> 四功五法 · 核心技艺</h3>
+            <div class="skills-grid">
+                <div class="skill-card"><span class="skill-icon">🎤</span><strong>唱</strong><br>唱功</div>
+                <div class="skill-card"><span class="skill-icon">🗣️</span><strong>念</strong><br>念白</div>
+                <div class="skill-card"><span class="skill-icon">💃</span><strong>做</strong><br>做功</div>
+                <div class="skill-card"><span class="skill-icon">⚔️</span><strong>打</strong><br>武打</div>
+                <div class="skill-card"><span class="skill-icon">✋</span><strong>手</strong><br>手法</div>
+                <div class="skill-card"><span class="skill-icon">👀</span><strong>眼</strong><br>眼法</div>
+                <div class="skill-card"><span class="skill-icon">🧘</span><strong>身</strong><br>身法</div>
+                <div class="skill-card"><span class="skill-icon">🚶</span><strong>法</strong><br>步法</div>
+                <div class="skill-card"><span class="skill-icon">🎯</span><strong>步</strong><br>韵律</div>
+            </div>
+            
+            <h3 style="margin-top: 28px;"><i class="fas fa-chart-line"></i> 当代新范式 · 破圈数据</h3>
+            <div class="data-stats">
+                <div class="stat-item"><span class="stat-number">12% → 47%</span><br>年轻观众占比跃升</div>
+                <div class="stat-item"><span class="stat-number">50亿+</span><br>京剧话题播放量</div>
+                <div class="stat-item"><span class="stat-number">1000万+</span><br>京剧网红粉丝总量</div>
+            </div>
+            <div class="badge-list">
+                <span class="badge">🎬 水袖功变装爆款</span>
+                <span class="badge">📱 戏腔翻唱热潮</span>
+                <span class="badge">🎮 京剧跨界游戏</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 名家传记 · 经典传承（增强版） -->
+    <h2 class="section-title"><i class="fas fa-landmark"></i> 名家传记 · 经典传承</h2>
+    <div class="masters-grid" id="mastersGrid"></div>
+</div>
+
+<footer><p>知·文脉 | 历史时间轴 · 名家关系图谱 · 四功五法深度解析</p></footer>
+
+<script>
+    // ---------- 丰富的时间轴数据（9个关键节点） ----------
+    const timelineEvents = [
+        { year: "1790", title: "徽班进京", desc: "三庆、四喜、和春、春台四大徽班进京为乾隆祝寿，京剧开始萌芽。", icon: "🚪", color: "#c2492d" },
+        { year: "1820-1850", title: "形成期", desc: "汉调合流，皮黄腔确立，老生三鼎甲（程长庚、余三胜、张二奎）出现。", icon: "🌱", color: "#d47c4a" },
+        { year: "1880-1900", title: "成熟期", desc: "谭鑫培创谭派，《定军山》拍摄首部京剧电影，老生艺术登峰造极。", icon: "🎬", color: "#e8a87c" },
+        { year: "1920-1930", title: "鼎盛期", desc: "四大名旦（梅兰芳、程砚秋、荀慧生、尚小云）争奇斗艳，京剧走向世界。", icon: "👑", color: "#f0b87a" },
+        { year: "1949-1960", title: "改革期", desc: "新中国戏曲改革，成立中国京剧院，京剧现代化探索。", icon: "🏛️", color: "#a8c4a0" },
+        { year: "1970-1980", title: "样板戏时期", desc: "《红灯记》《智取威虎山》等作品留下特殊时代印记。", icon: "🎭", color: "#8ba8c4" },
+        { year: "1990-2000", title: "传承与保护", desc: "京剧被列入非遗，各大流派传承人培养计划启动。", icon: "📜", color: "#b88a9e" },
+        { year: "2010-2019", title: "新媒体萌芽", desc: "短视频平台出现，部分京剧演员开始尝试线上传播。", icon: "📱", color: "#c27e5c" },
+        { year: "2020至今", title: "破圈爆发期", desc: "京剧网红现象爆发，年轻观众占比从12%跃升至47%，话题播放量超50亿。", icon: "🚀", color: "#d4a373" }
+    ];
+
+    // 名家数据
+    const mastersData = [
+        { name: "程长庚", title: "京剧鼻祖", desc: "老生三鼎甲之首，徽班领袖，融合徽汉二调奠定京剧基础。", era: "清代", icon: "👑" },
+        { name: "谭鑫培", title: "谭派创始人", desc: "拍摄中国首部电影《定军山》，创立谭派，影响深远。", era: "清末民初", icon: "🎬" },
+        { name: "梅兰芳", title: "梅派宗师", desc: "四大名旦之首，将京剧推向世界舞台，代表作《贵妃醉酒》。", era: "近代", icon: "🌸" },
+        { name: "程砚秋", title: "程派创始人", desc: "幽咽婉转唱腔，擅长悲剧，《锁麟囊》为传世经典。", era: "近代", icon: "🎵" },
+        { name: "荀慧生", title: "荀派创始人", desc: "花旦表演活泼灵动，《红娘》为其代表作。", era: "近代", icon: "💃" },
+        { name: "尚小云", title: "尚派创始人", desc: "刚劲挺拔，文武兼长，《昭君出塞》名动天下。", era: "近代", icon: "⚔️" },
+        { name: "周信芳", title: "麒派老生", desc: "苍劲有力，表演火爆，《徐策跑城》堪称一绝。", era: "现代", icon: "🎭" },
+        { name: "于魁智", title: "当代名家", desc: "当今最具影响力的老生演员，传承创新并重。", era: "当代", icon: "🌟" },
+        { name: "李胜素", title: "梅派传人", desc: "梅派第三代传人，扮相端庄，唱腔甜美。", era: "当代", icon: "🎤" }
+    ];
+
+    // 渲染时间轴（竖线风格）
+    function renderTimeline() {
+        const timelineDiv = document.getElementById("timeline");
+        if (!timelineDiv) return;
+        
+        timelineDiv.innerHTML = timelineEvents.map((ev, idx) => `
+            <div class="timeline-item" data-index="${idx}">
+                <div class="timeline-dot" style="background: ${ev.color};">
+                    <span class="timeline-icon">${ev.icon}</span>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-year" style="color: ${ev.color};">${ev.year}</div>
+                    <div class="timeline-title">${ev.title}</div>
+                    <div class="timeline-desc">${ev.desc}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // 时间轴滑动控制（轮播效果）
+    let currentTimelineIndex = 0;
+    function updateTimelineView(index) {
+        const items = document.querySelectorAll('.timeline-item');
+        if (!items.length) return;
+        index = Math.max(0, Math.min(index, items.length - 1));
+        currentTimelineIndex = index;
+        items.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('active');
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                item.classList.remove('active');
+            }
+        });
+        const indicator = document.getElementById('timelineIndicator');
+        if (indicator) indicator.innerText = `${index + 1} / ${items.length}`;
+        
+        // 更新进度条
+        const progress = document.getElementById('timelineProgress');
+        if (progress) {
+            const percent = ((index) / (items.length - 1)) * 100;
+            progress.style.width = `${percent}%`;
+        }
+    }
+
+    // 渲染名家网格
+    function renderMasters() {
+        const mastersGrid = document.getElementById("mastersGrid");
+        if (!mastersGrid) return;
+        mastersGrid.innerHTML = mastersData.map(m => `
+            <div class="master-card">
+                <div class="master-icon">${m.icon}</div>
+                <div class="master-info">
+                    <h4>${m.name}</h4>
+                    <span class="master-title">${m.title}</span>
+                    <p>${m.desc}</p>
+                    <span class="master-era">${m.era}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // 页面初始化
+    function init() {
+        renderTimeline();
+        renderMasters();
+        
+        // 时间轴控件绑定
+        const prevBtn = document.getElementById('timelinePrevBtn');
+        const nextBtn = document.getElementById('timelineNextBtn');
+        if (prevBtn) prevBtn.addEventListener('click', () => updateTimelineView(currentTimelineIndex - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => updateTimelineView(currentTimelineIndex + 1));
+        
+        // 默认激活第一个节点
+        updateTimelineView(0);
+    }
+
+    init();
+</script>
+</body>
+</html>

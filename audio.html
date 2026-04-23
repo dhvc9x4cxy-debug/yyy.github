@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梨园幻境 · 听·韵事 | 经典唱段与名家影像</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/new_file.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo"><i class="fas fa-mask"></i> 梨园幻境</div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="visual.html"><i class="fas fa-palette"></i> 赏·国色</a>
+            <a href="audio.html" class="active"><i class="fas fa-music"></i> 听·韵事</a>  
+            <a href="game.html"><i class="fas fa-gamepad"></i> 玩·趣魂</a>
+            <a href="knowledge.html"><i class="fas fa-book-open"></i> 知·文脉</a>
+            <a href="theater.html"><i class="fas fa-ticket-alt"></i> 约·梨园</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- 名家名作 · 经典影像库 -->
+    <h2 class="section-title"><i class="fas fa-star"></i> 名家名作 · 经典影像库</h2>
+    <div class="card-grid" id="masterGrid"></div>
+    
+    <!-- 经典唱段库 -->
+    <h2 class="section-title"><i class="fas fa-music"></i> 经典唱段库 · 带白话释义 & 滚动歌词</h2>
+    <div id="ariaList"></div>
+</div>
+
+<footer><p>听·韵事 | 音影馆 · 经典唱词释义 + 名家影像珍藏</p></footer>
+
+<script>
+    // 全局音频对象，用于控制播放和停止
+    let currentAudio = null;
+    let currentModal = null;
+
+    // 经典唱段库数据（添加 mp3 路径）
+    const ariaLibrary = [
+        { 
+            name: "《贵妃醉酒》海岛冰轮初转腾", 
+            meaning: "杨贵妃月下独酌，华丽四平调，梅派代表唱段。", 
+            lyrics: "海岛冰轮初转腾，见玉兔又早东升。那冰轮离海岛，乾坤分外明。皓月当空，恰便似嫦娥离月宫。",
+            fullLyrics: "海岛冰轮初转腾，见玉兔又早东升。那冰轮离海岛，乾坤分外明。皓月当空，恰便似嫦娥离月宫。奴似嫦娥离月宫，好一似嫦娥下九重。",
+            mp3: "audio/guifeizuijiu.mp3"
+        },
+        { 
+            name: "《锁麟囊》春秋亭外风雨暴", 
+            meaning: "薛湘灵慷慨赠囊，程派幽咽婉转，唱尽人世悲欢。", 
+            lyrics: "春秋亭外风雨暴，何处悲声破寂寥。隔帘只见一花轿，想必是新婚渡鹊桥。",
+            fullLyrics: "春秋亭外风雨暴，何处悲声破寂寥。隔帘只见一花轿，想必是新婚渡鹊桥。吉日良辰当欢笑，为何鲛珠化泪抛？",
+            mp3: "audio/suolinnang.mp3"
+        },
+        { 
+            name: "《霸王别姬》看大王在帐中和衣睡稳", 
+            meaning: "虞姬夜巡，南梆子委婉深情，梅派经典。", 
+            lyrics: "看大王在帐中和衣睡稳，我这里出帐外且散愁情。轻移步走向前荒郊站定，猛抬头见碧落月色清明。",
+            fullLyrics: "看大王在帐中和衣睡稳，我这里出帐外且散愁情。轻移步走向前荒郊站定，猛抬头见碧落月色清明。",
+            mp3: "audio/bawangbieji.mp3"
+        },
+        { 
+            name: "《空城计》我本是卧龙岗散淡的人", 
+            meaning: "诸葛亮城楼抚琴，余派老生唱段，从容淡定。", 
+            lyrics: "我本是卧龙岗散淡的人，凭阴阳如反掌保定乾坤。先帝爷下南阳御驾三请，算就了汉家的业鼎足三分。",
+            fullLyrics: "我本是卧龙岗散淡的人，凭阴阳如反掌保定乾坤。先帝爷下南阳御驾三请，算就了汉家的业鼎足三分。",
+            mp3: "audio/kongchengji.mp3"
+        },
+        { 
+            name: "《铡美案》包龙图打坐在开封府", 
+            meaning: "包拯怒铡陈世美，裘派花脸唱段，正气凛然。", 
+            lyrics: "包龙图打坐在开封府，尊一声驸马爷细听端的。曾记得端午日朝贺天子，我与你在朝房曾把话提。",
+            fullLyrics: "包龙图打坐在开封府，尊一声驸马爷细听端的。曾记得端午日朝贺天子，我与你在朝房曾把话提。",
+            mp3: "audio/zhaomeian.mp3"
+        }
+    ];
+    
+    // 名家名作数据
+    const masters = [
+        { 
+            name: "梅兰芳", 
+            title: "《贵妃醉酒》· 梅派青衣典范",
+            desc: "梅兰芳（1894-1961），京剧四大名旦之首，创立梅派艺术。此段为1956年电影版《贵妃醉酒》，雍容华贵，千古绝唱。",
+            img: "img/meilanfang.jpg",
+            videoUrl: "https://www.bilibili.com/bangumi/play/ep367859"
+        },
+        { 
+            name: "程砚秋", 
+            title: "《锁麟囊》· 程派幽咽婉转",
+            desc: "程砚秋（1904-1958），程派创始人，以悲剧见长。《锁麟囊》为其巅峰之作，唱腔如泣如诉。",
+            img: "img/chengyanqiu.jpg",
+            videoUrl: "https://www.bilibili.com/video/BV18Y4y1z7Wb/"  
+        },
+        { 
+            name: "周信芳", 
+            title: "《徐策跑城》· 麒派老生风采",
+            desc: "周信芳（1895-1975），麒派创始人，表演苍劲有力。此段为《徐策跑城》经典片段，髯口功、台步堪称一绝。",
+            img: "img/zhouxinfang.jpg",
+            videoUrl: "https://www.bilibili.com/video/BV1bW4y1T71e/"  
+        },
+        { 
+            name: "裘盛戎", 
+            title: "《铡美案》· 裘派花脸铜锤",
+            desc: "裘盛戎（1915-1971），裘派花脸创始人，嗓音浑厚宽亮。《铡美案》中包拯唱段，正气凛然。",
+            img: "img/qiushengrong.jpg",
+            videoUrl: "https://www.bilibili.com/video/BV1pt411F75B/" 
+        }
+    ];
+    
+    // 停止所有播放
+    function stopAllPlayback() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+    }
+    
+    // 唱词滚动模态框（带音频播放和关闭停止功能）
+    function showLyricsModal(aria) {
+        // 如果已有弹窗，先关闭并停止音乐
+        if (currentModal) {
+            stopAllPlayback();
+            currentModal.remove();
+            currentModal = null;
+        }
+        
+        // 创建弹窗
+        const modal = document.createElement('div');
+        modal.className = 'lyrics-modal';
+        modal.innerHTML = `
+            <div class="lyrics-modal-content">
+                <div class="lyrics-modal-header">
+                    <h3><i class="fas fa-music"></i> ${aria.name}</h3>
+                    <span class="lyrics-close">&times;</span>
+                </div>
+                <div class="lyrics-modal-body">
+                    <div class="lyrics-meaning">
+                        <i class="fas fa-book-open"></i> 白话释义：${aria.meaning}
+                    </div>
+                    <div class="lyrics-scroll">
+                        <div class="lyrics-line">${aria.fullLyrics || aria.lyrics}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        currentModal = modal;
+        
+        // 创建音频对象并开始播放
+        const audio = new Audio(aria.mp3);
+        currentAudio = audio;
+        
+        audio.play().catch(err => {
+            console.error('音频播放失败:', err);
+        });
+        
+        // 音频播放结束后自动清理
+        audio.addEventListener('ended', () => {
+            stopAllPlayback();
+            // 显示播放完成提示
+            const endMsg = document.createElement('div');
+            endMsg.className = 'toast-msg';
+            endMsg.innerHTML = `✅ 《${aria.name}》播放完成`;
+            document.body.appendChild(endMsg);
+            setTimeout(() => endMsg.remove(), 2000);
+        });
+        
+        // 关闭弹窗时停止播放并清理
+        const closeBtn = modal.querySelector('.lyrics-close');
+        closeBtn.onclick = () => {
+            stopAllPlayback();
+            modal.remove();
+            currentModal = null;
+        };
+        
+        modal.onclick = (e) => { 
+            if (e.target === modal) {
+                stopAllPlayback();
+                modal.remove();
+                currentModal = null;
+            }
+        };
+    }
+    
+    // 渲染名家名作卡片
+    const masterGrid = document.getElementById("masterGrid");
+    if (masterGrid) {
+        masterGrid.innerHTML = masters.map(m => `
+            <div class="card master-card">
+                <div class="card-content">
+                    <span class="tag"><i class="fas fa-film"></i> 经典影像</span>
+                    <img class="master-img" src="${m.img}" alt="${m.name}" onerror="this.src='https://picsum.photos/200/150?random=${m.name}'">
+                    <h3>${m.name} · ${m.title}</h3>
+                    <p>${m.desc}</p>
+                    <button class="btn watch-btn" onclick="window.open('${m.videoUrl}', '_blank')">
+                        <i class="fas fa-play-circle"></i> 观看影像
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // 渲染经典唱段列表
+    const ariaDiv = document.getElementById("ariaList");
+    if (ariaDiv) {
+        ariaDiv.innerHTML = ariaLibrary.map((a, index) => `
+            <div class="audio-player-item">
+                <div class="aria-info">
+                    <strong>🎵 ${a.name}</strong>
+                    <br><small>📖 白话释义：${a.meaning}</small>
+                    <br><span class="lyrics-preview">🎤 ${a.lyrics}</span>
+                </div>
+                <button class="btn playBtn" data-index="${index}">
+                    <i class="fas fa-headphones"></i> 带释义听赏
+                </button>
+            </div>
+        `).join('');
+    }
+    
+    // 绑定播放按钮事件（直接显示弹窗并播放）
+    document.querySelectorAll('.playBtn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = parseInt(btn.getAttribute('data-index'));
+            const aria = ariaLibrary[index];
+            if (aria) {
+                showLyricsModal(aria);
+            }
+        });
+    });
+    
+    // 页面关闭前清理音频
+    window.addEventListener('beforeunload', () => {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+    });
+</script>
+</body>
+</html>

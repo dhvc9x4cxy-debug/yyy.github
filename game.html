@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>梨园幻境 · 玩·趣魂 | 京剧十连问 · 破圈挑战赛</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/new_file.css">
+    <style>
+        /* ========== 新增：知识殿堂跳转按钮样式 ========== */
+        .knowledge-entry-section {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+        
+        .knowledge-entry-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #b08d5a, #8b6b45);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(139, 107, 69, 0.25);
+        }
+        
+        .knowledge-entry-btn:hover {
+            background: linear-gradient(135deg, #c4a47a, #a07850);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(139, 107, 69, 0.35);
+        }
+        
+        .knowledge-entry-btn i {
+            font-size: 1.3rem;
+        }
+        
+        .entry-subtitle {
+            font-size: 0.85rem;
+            color: #8b7355;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo"><i class="fas fa-mask"></i> 梨园幻境</div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="visual.html"><i class="fas fa-palette"></i> 赏·国色</a>
+            <a href="audio.html"><i class="fas fa-music"></i> 听·韵事</a> 
+            <a href="game.html" class="active"><i class="fas fa-gamepad"></i> 玩·趣魂</a>
+            <a href="knowledge.html"><i class="fas fa-book-open"></i> 知·文脉</a>
+            <a href="theater.html"><i class="fas fa-ticket-alt"></i> 约·梨园</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- 游戏主区域：京剧十连问（保持不变） -->
+    <div class="game-header">
+        <h2 class="section-title"><i class="fas fa-chess-board"></i> 🎭 梨园大擂台 · 京剧十连问</h2>
+        <div class="game-score-board">
+            <span><i class="fas fa-question-circle"></i> 第 <span id="currentQNum">1</span> / <span id="totalQNum">10</span> 题</span>
+            <span><i class="fas fa-star"></i> 得分 <span id="scoreCount">0</span></span>
+            <span><i class="fas fa-trophy"></i> 最高分 <span id="highScoreSpan">0</span></span>
+            <span><i class="fas fa-heart"></i> 剩余提示 <span id="hintLeftSpan">3</span></span>
+        </div>
+    </div>
+
+    <div class="game-main-box">
+        <!-- 题目卡片区域 -->
+        <div class="question-area" id="questionArea">
+            <div class="question-icon"><i class="fas fa-question-circle"></i></div>
+            <div class="question-text" id="questionText">点击「开始挑战」开启你的京剧十连问之旅</div>
+            <div class="hint-badge" id="hintBadge" style="display: none;">
+                <i class="fas fa-lightbulb"></i> 💡 戏箱小抄：<span id="hintText"></span>
+            </div>
+        </div>
+
+        <!-- 选项卡片区域 -->
+        <div class="options-area" id="optionsArea"></div>
+
+        <!-- 游戏控制栏 -->
+        <div class="game-controls">
+            <button id="startBtn" class="btn btn-primary btn-lg"><i class="fas fa-play"></i> 开始挑战</button>
+            <button id="refreshHintBtn" class="btn btn-outline" disabled><i class="fas fa-sync-alt"></i> 刷新小抄 (<span id="hintLeftInner">3</span>)</button>
+            <div class="game-feedback" id="gameFeedback">
+                <i class="fas fa-comment-dots"></i> 点击开始，10道京剧知识题等你来战！
+            </div>
+        </div>
+
+        <!-- 通关彩蛋区域 -->
+        <div class="achievement-area" id="achievementArea" style="display: none;">
+            <div class="achievement-card">
+                <i class="fas fa-crown"></i>
+                <span id="achievementText"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 新增：知识殿堂跳转入口 ========== -->
+    <div class="knowledge-entry-section">
+        <a href="game-knowledge.html" class="knowledge-entry-btn">
+            <i class="fas fa-scroll"></i>
+            进入梨园知识殿堂
+            <i class="fas fa-arrow-right"></i>
+        </a>
+        <p class="entry-subtitle">了解更多京剧知识，助你挑战满分！</p>
+    </div>
+
+    <!-- 梨园知识小百科（动态更新） -->
+    <div class="knowledge-tips">
+        <h4><i class="fas fa-book"></i> 梨园冷知识</h4>
+        <p id="funFact">✨ 每完成一题都会解锁一条京剧冷知识，快来挑战吧！</p>
+    </div>
+</div>
+
+<footer><p>玩·趣魂 | 京剧十连问 · 涵盖行当/脸谱/名家/剧目/乐器/历史 | 考考你的破圈指数</p></footer>
+
+<script>
+    // ---------- 京剧知识题库（保持不变） ----------
+    const masterQuestionBank = [
+        // 行当类
+        { question: "京剧中的"旦"角不包括以下哪一类？", options: ["青衣", "花旦", "武旦", "花脸"], correct: "花脸", hint: "花脸属于「净」行，不是旦角。", funFact: "旦角分为青衣、花旦、刀马旦、武旦、老旦等。" },
+        { question: "下列哪位是著名的"老生"演员？", options: ["梅兰芳", "程砚秋", "马连良", "荀慧生"], correct: "马连良", hint: "马连良是四大须生之一，老生名家。", funFact: "四大须生：马连良、谭富英、杨宝森、奚啸伯。" },
+        { question: ""丑"角脸上的白色块通常画在哪里？", options: ["额头", "鼻梁", "脸颊", "下巴"], correct: "鼻梁", hint: "丑角鼻梁上画白色豆腐块，俗称「小花脸」。", funFact: "丑角分文丑和武丑，文丑如《群英会》蒋干。" },
+        // 脸谱类
+        { question: "京剧脸谱中，白色通常象征什么性格？", options: ["忠勇", "刚直", "奸诈", "神秘"], correct: "奸诈", hint: "白脸代表奸诈多疑，如曹操、严嵩。", funFact: "红脸忠勇（关羽）、黑脸刚直（包拯）、白脸奸诈（曹操）。" },
+        { question: "《闹天宫》中孙悟空的脸谱主色调是？", options: ["红色", "黄色", "白色", "金色"], correct: "金色", hint: "孙悟空脸谱为金色，代表神佛/猴王。", funFact: "金色脸谱多用于神怪角色，如二郎神、孙悟空。" },
+        // 剧目类
+        { question: "《贵妃醉酒》中杨贵妃由哪位京剧大师发扬光大？", options: ["程砚秋", "荀慧生", "梅兰芳", "尚小云"], correct: "梅兰芳", hint: "梅兰芳的《贵妃醉酒》是梅派代表剧目。", funFact: "梅兰芳在剧中加入了「卧鱼」等高难度身段。" },
+        { question: ""劝千岁杀字休出口"出自哪部经典剧目？", options: ["《空城计》", "《甘露寺》", "《借东风》", "《捉放曹》"], correct: "《甘露寺》", hint: "这是乔玄劝孙权不要杀刘备的著名唱段。", funFact: "这段「劝千岁」是马派老生代表唱腔。" },
+        { question: "以下哪部戏讲述的是"霸王别姬"的故事？", options: ["《长坂坡》", "《霸王别姬》", "《宇宙锋》", "《锁麟囊》"], correct: "《霸王别姬》", hint: "项羽被困垓下，虞姬自刎。", funFact: "《霸王别姬》中虞姬的剑舞是经典场面。" },
+        // 名家类
+        { question: "被誉为"京剧艺术大师"、"梅派"创始人的是？", options: ["程砚秋", "梅兰芳", "周信芳", "马连良"], correct: "梅兰芳", hint: "梅兰芳是四大名旦之首。", funFact: "梅兰芳曾赴美演出，将京剧推向世界。" },
+        { question: ""麒派"老生艺术是由哪位大师创立的？", options: ["梅兰芳", "程砚秋", "周信芳", "荀慧生"], correct: "周信芳", hint: "周信芳艺名「麒麟童」，创立麒派。", funFact: "麒派表演苍劲有力，擅演《徐策跑城》。" },
+        // 乐器类
+        { question: "京剧乐队中，被称为"武场"灵魂的打击乐器是？", options: ["京胡", "月琴", "板鼓", "铙钹"], correct: "板鼓", hint: "板鼓由鼓师指挥，控制全场节奏。", funFact: "武场乐器包括板鼓、大锣、铙钹、小锣。" },
+        { question: "京剧"文场"三大件不包括以下哪一项？", options: ["京胡", "月琴", "三弦", "大锣"], correct: "大锣", hint: "大锣属于武场乐器。", funFact: "文场三大件：京胡、月琴、三弦。" },
+        // 历史类
+        { question: "京剧形成于哪个朝代？", options: ["唐代", "宋代", "明代", "清代"], correct: "清代", hint: "乾隆年间四大徽班进京，逐渐形成京剧。", funFact: "京剧至今已有200多年历史。" },
+        { question: "四大徽班进京发生在哪一年左右？", options: ["1790年", "1840年", "1900年", "1911年"], correct: "1790年", hint: "乾隆五十五年，为皇帝祝寿进京。", funFact: "四大徽班：三庆、四喜、和春、春台。" },
+        // 特技类
+        { question: "京剧中的"摔僵尸"属于哪种表演特技？", options: ["毯子功", "把子功", "水袖功", "翎子功"], correct: "毯子功", hint: "摔僵尸是毯子功中的高难度技巧。", funFact: "毯子功包括翻、滚、摔、跌等技巧。" },
+        { question: "京剧表演中，演员甩动头顶的翎子称为什么？", options: ["翎子功", "帽翅功", "水袖功", "髯口功"], correct: "翎子功", hint: "翎子功多用于吕布、周瑜等角色。", funFact: "翎子功有掏翎、衔翎、甩翎等技巧。" }
+    ];
+
+    // 游戏状态（保持不变）
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let score = 0;
+    let highScore = 0;
+    let hintLeft = 3;
+    let gameActive = false;
+    let answered = false;
+    let currentQuestionObj = null;
+    let canRefreshHint = true;
+
+    // DOM 元素（保持不变）
+    const questionText = document.getElementById('questionText');
+    const optionsArea = document.getElementById('optionsArea');
+    const startBtn = document.getElementById('startBtn');
+    const refreshHintBtn = document.getElementById('refreshHintBtn');
+    const gameFeedback = document.getElementById('gameFeedback');
+    const currentQNumSpan = document.getElementById('currentQNum');
+    const totalQNumSpan = document.getElementById('totalQNum');
+    const scoreCountSpan = document.getElementById('scoreCount');
+    const highScoreSpan = document.getElementById('highScoreSpan');
+    const hintLeftSpan = document.getElementById('hintLeftSpan');
+    const hintLeftInner = document.getElementById('hintLeftInner');
+    const hintBadge = document.getElementById('hintBadge');
+    const hintTextSpan = document.getElementById('hintText');
+    const achievementArea = document.getElementById('achievementArea');
+    const achievementTextSpan = document.getElementById('achievementText');
+    const funFactP = document.getElementById('funFact');
+
+    // 所有游戏函数保持不变
+    function loadHighScore() {
+        const saved = localStorage.getItem('operaQuizHighScore');
+        if (saved) highScore = parseInt(saved);
+        highScoreSpan.innerText = highScore;
+    }
+
+    function saveHighScore() {
+        if (score > highScore) {
+            highScore = score;
+            highScoreSpan.innerText = highScore;
+            localStorage.setItem('operaQuizHighScore', highScore);
+        }
+    }
+
+    function selectRandomQuestions() {
+        const shuffled = [...masterQuestionBank];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled.slice(0, 10);
+    }
+
+    function refreshHint() {
+        if (!gameActive || answered) {
+            gameFeedback.innerHTML = '<i class="fas fa-info-circle"></i> 请在答题前使用小抄~';
+            return;
+        }
+        if (hintLeft <= 0) {
+            gameFeedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 小抄次数已用完！';
+            return;
+        }
+        if (!canRefreshHint) return;
+        
+        canRefreshHint = false;
+        hintLeft--;
+        hintLeftSpan.innerText = hintLeft;
+        hintLeftInner.innerText = hintLeft;
+        
+        if (currentQuestionObj && currentQuestionObj.hint) {
+            hintTextSpan.innerText = currentQuestionObj.hint;
+            hintBadge.style.display = 'block';
+            gameFeedback.innerHTML = '<i class="fas fa-lightbulb"></i> 戏箱小抄已刷新！快看提示~';
+            
+            setTimeout(() => {
+                if (hintBadge.style.display === 'block') {
+                    hintBadge.style.display = 'none';
+                }
+            }, 4000);
+        }
+        
+        setTimeout(() => {
+            canRefreshHint = true;
+        }, 1000);
+        
+        refreshHintBtn.disabled = false;
+    }
+
+    function displayCurrentQuestion() {
+        if (!gameActive || currentIndex >= currentQuestions.length) return;
+        
+        currentQuestionObj = currentQuestions[currentIndex];
+        questionText.innerHTML = `<i class="fas fa-feather-alt"></i> ${currentQuestionObj.question}`;
+        
+        const opts = [...currentQuestionObj.options];
+        for (let i = opts.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [opts[i], opts[j]] = [opts[j], opts[i]];
+        }
+        
+        optionsArea.innerHTML = '';
+        opts.forEach(opt => {
+            const optionCard = document.createElement('div');
+            optionCard.className = 'costume-option';
+            optionCard.innerHTML = `
+                <div class="option-emoji">${getOptionEmoji(opt)}</div>
+                <div class="option-text">${opt}</div>
+            `;
+            optionCard.addEventListener('click', () => {
+                if (!gameActive || answered) return;
+                checkAnswer(opt);
+            });
+            optionsArea.appendChild(optionCard);
+        });
+        
+        answered = false;
+        currentQNumSpan.innerText = currentIndex + 1;
+        totalQNumSpan.innerText = currentQuestions.length;
+        scoreCountSpan.innerText = score;
+        hintBadge.style.display = 'none';
+        refreshHintBtn.disabled = false;
+    }
+    
+    function getOptionEmoji(opt) {
+        if (opt.includes('梅兰芳')) return '🎭';
+        if (opt.includes('脸谱') || opt.includes('红脸')) return '🎨';
+        if (opt.includes('大锣')) return '🥁';
+        if (opt.includes('1790')) return '📅';
+        return '🎭';
+    }
+
+    function checkAnswer(selected) {
+        if (!gameActive || answered) return;
+        answered = true;
+        
+        const isCorrect = (selected === currentQuestionObj.correct);
+        
+        if (isCorrect) {
+            score += 10;
+            scoreCountSpan.innerText = score;
+            saveHighScore();
+            
+            gameFeedback.innerHTML = `<i class="fas fa-check-circle"></i> ✅ 漂亮！${currentQuestionObj.correct} 是正确的！ +10分`;
+            gameFeedback.className = 'game-feedback correct-feedback';
+            funFactP.innerHTML = `<i class="fas fa-lightbulb"></i> ✨ 冷知识：${currentQuestionObj.funFact}`;
+            highlightOption(currentQuestionObj.correct, true);
+            
+            setTimeout(() => {
+                if (gameActive) {
+                    currentIndex++;
+                    if (currentIndex < currentQuestions.length) {
+                        displayCurrentQuestion();
+                    } else {
+                        gameComplete();
+                    }
+                }
+            }, 1000);
+        } else {
+            gameFeedback.innerHTML = `<i class="fas fa-times-circle"></i> ❌ 很遗憾！正确答案是：${currentQuestionObj.correct}。${currentQuestionObj.hint}`;
+            gameFeedback.className = 'game-feedback wrong-feedback';
+            highlightOption(selected, false);
+            highlightOption(currentQuestionObj.correct, true);
+            funFactP.innerHTML = `<i class="fas fa-book"></i> 📖 小贴士：${currentQuestionObj.hint}`;
+            
+            setTimeout(() => {
+                if (gameActive) {
+                    gameOver();
+                }
+            }, 2000);
+        }
+        
+        refreshHintBtn.disabled = true;
+    }
+    
+    function highlightOption(optionText, isCorrect) {
+        const options = document.querySelectorAll('.costume-option');
+        for (let opt of options) {
+            if (opt.querySelector('.option-text').innerText === optionText) {
+                if (isCorrect) {
+                    opt.classList.add('correct-answer');
+                } else {
+                    opt.classList.add('wrong-answer');
+                }
+                setTimeout(() => {
+                    opt.classList.remove('correct-answer', 'wrong-answer');
+                }, 1000);
+                break;
+            }
+        }
+    }
+    
+    function gameComplete() {
+        gameActive = false;
+        startBtn.innerText = '再来一局';
+        refreshHintBtn.disabled = true;
+        
+        const totalScore = score;
+        let message = '';
+        if (totalScore === 100) {
+            message = '🏆 满分破圈大神！京剧十级学者！🏆';
+            showAchievement('🎉 满分通关！京剧破圈王者！ 🎉');
+        } else if (totalScore >= 70) {
+            message = '🌟 京剧达人！再进一步就是大师啦！ 🌟';
+            showAchievement('✨ 京剧达人 · 破圈成功 ✨');
+        } else {
+            message = '📚 再学学京剧知识，下次一定全对！ 💪';
+            showAchievement('💪 继续努力，梨园之路还很长~');
+        }
+        
+        gameFeedback.innerHTML = `<i class="fas fa-flag-checkered"></i> 闯关结束！最终得分：${totalScore}/100。${message}`;
+        gameFeedback.className = 'game-feedback';
+        saveHighScore();
+    }
+    
+    function gameOver() {
+        gameActive = false;
+        startBtn.innerText = '再来一局';
+        refreshHintBtn.disabled = true;
+        
+        gameFeedback.innerHTML = `<i class="fas fa-skull-crosswalk"></i> 挑战失败！最终得分：${score}/100。点击「再来一局」重新挑战！`;
+        gameFeedback.className = 'game-feedback wrong-feedback';
+        showAchievement('😢 差一点点，再来一局吧！');
+        saveHighScore();
+    }
+    
+    function showAchievement(msg) {
+        achievementTextSpan.innerText = msg;
+        achievementArea.style.display = 'block';
+        setTimeout(() => {
+            achievementArea.style.display = 'none';
+        }, 3000);
+    }
+    
+    function startNewGame() {
+        currentQuestions = selectRandomQuestions();
+        currentIndex = 0;
+        score = 0;
+        hintLeft = 3;
+        gameActive = true;
+        answered = false;
+        
+        scoreCountSpan.innerText = score;
+        hintLeftSpan.innerText = hintLeft;
+        hintLeftInner.innerText = hintLeft;
+        startBtn.innerText = '挑战中...';
+        setTimeout(() => { startBtn.innerText = '再来一局'; }, 1500);
+        
+        refreshHintBtn.disabled = false;
+        gameFeedback.innerHTML = '<i class="fas fa-play"></i> 游戏开始！共10题，每题10分，答错即结束。可使用3次「刷新小抄」！';
+        gameFeedback.className = 'game-feedback';
+        funFactP.innerHTML = '✨ 每完成一题都会解锁一条京剧冷知识，快来挑战吧！';
+        
+        displayCurrentQuestion();
+    }
+
+    function init() {
+        loadHighScore();
+        totalQNumSpan.innerText = '10';
+        
+        startBtn.addEventListener('click', () => {
+            if (gameActive) {
+                if (confirm('当前游戏进行中，重新开始会丢失进度，确定吗？')) {
+                    startNewGame();
+                }
+            } else {
+                startNewGame();
+            }
+        });
+        
+        refreshHintBtn.addEventListener('click', refreshHint);
+        
+        gameFeedback.innerHTML = '<i class="fas fa-comment-dots"></i> 点击「开始挑战」，10道京剧知识题等你来战！';
+    }
+    
+    init();
+</script>
+</body>
+</html>

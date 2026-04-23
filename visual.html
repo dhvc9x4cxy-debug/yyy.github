@@ -1,0 +1,202 @@
+<!-- visual.html - 赏·国色 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梨园幻境 · 赏·国色 | 行当脸谱与高清图鉴</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/new_file.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        /* 行当卡片图片样式 */
+        .role-card-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 60px;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            border: 3px solid #f0d8a8;
+        }
+        
+        /* 轮播图片样式 */
+        .swiper-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        
+        /* 脸谱色彩心理学卡片图片样式 */
+        .face-card-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 10px auto;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 2px solid #e2bc89;
+        }
+        
+        .card {
+            text-align: center;
+        }
+        .card .tag {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .card h3 {
+            margin: 10px 0;
+            font-size: 1.3rem;
+        }
+        .card p {
+            font-size: 0.85rem;
+            color: #7a5a44;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo"><i class="fas fa-mask"></i> 梨园幻境</div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="visual.html" class="active"><i class="fas fa-palette"></i> 赏·国色</a>
+            <a href="audio.html"><i class="fas fa-music"></i> 听·韵事</a> 
+            <a href="game.html"><i class="fas fa-gamepad"></i> 玩·趣魂</a>
+            <a href="knowledge.html"><i class="fas fa-book-open"></i> 知·文脉</a>
+            <a href="theater.html"><i class="fas fa-ticket-alt"></i> 约·梨园</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h2 class="section-title"><i class="fas fa-palette"></i> 赏·国色 | 行当与脸谱图谱</h2>
+    <div class="card-grid" id="roleGrid"></div>
+    
+    <h2 class="section-title"><i class="fas fa-images"></i> 高清戏服 · 头饰图鉴轮播</h2>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="img/daintou.jpg" alt="点翠头面">
+                <p>✨ 点翠头面 · 旦角华贵</p>
+            </div>
+            <div class="swiper-slide">
+                <img src="img/dakao.jpg" alt="大靠">
+                <p>🎭 大靠 · 武将威风</p>
+            </div>
+            <div class="swiper-slide">
+                <img src="img/gongzhuang.jpg" alt="宫装">
+                <p>🌸 宫装 · 贵妃同款</p>
+            </div>
+            <div class="swiper-slide">
+                <img src="img/rankou.jpg" alt="髯口">
+                <p>⚜️ 髯口 · 老生神韵</p>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    
+    <h2 class="section-title"><i class="fas fa-mask"></i> 脸谱色彩心理学</h2>
+    <div class="card-grid" id="faceColorGrid"></div>
+</div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+<footer><p>赏·国色 | 行当脸谱视觉库 · 高清图鉴互动体验</p></footer>
+
+<script>
+    // 行当数据 - 带图片路径
+    const roles = [
+        { 
+            name: "生", 
+            desc: "老生沉稳，小生俊美，武生英姿",
+            img: "img/sheng.jpg"
+        },
+        { 
+            name: "旦", 
+            desc: "青衣端庄，花旦活泼，刀马旦飒爽",
+            img: "img/dan.jpg"
+        },
+        { 
+            name: "净", 
+            desc: "花脸，脸谱色彩代表性格",
+            img: "img/jing.jpg"
+        },
+        { 
+            name: "丑", 
+            desc: "丑角幽默，戏中调味剂",
+            img: "img/chou.jpg"
+        }
+    ];
+    
+    // 脸谱色彩心理学数据 - 带图片
+    const faceColors = [
+        {
+            color: "红脸",
+            title: "忠勇侠义",
+            desc: "关羽、赵匡胤，象征赤胆忠心",
+            img: "img/honglian.jpg"
+        },
+        {
+            color: "黑脸",
+            title: "刚正不阿",
+            desc: "包拯、张飞，铁面无私",
+            img: "img/heilian.jpg"
+        },
+        {
+            color: "白脸",
+            title: "奸诈多疑",
+            desc: "曹操、严嵩，阴险狡诈",
+            img: "img/bailian.jpg"
+        },
+        {
+            color: "金/银脸",
+            title: "神佛鬼怪",
+            desc: "二郎神、孙悟空，神秘威严",
+            img: "img/jinyinlian.jpg"
+        }
+    ];
+    
+    // 渲染行当卡片
+    const roleGrid = document.getElementById("roleGrid");
+    roleGrid.innerHTML = roles.map(r => `
+        <div class="card">
+            <div class="card-content">
+                <span class="tag">行当 · ${r.name}</span>
+                <img class="role-card-img" src="${r.img}" alt="${r.name}角形象" onerror="this.src='https://picsum.photos/120/120?random=${r.name}'">
+                <h3>${r.name}角 · ${r.desc}</h3>
+            </div>
+        </div>
+    `).join('');
+    
+    // 渲染脸谱色彩心理学卡片
+    const faceColorGrid = document.getElementById("faceColorGrid");
+    faceColorGrid.innerHTML = faceColors.map(f => `
+        <div class="card">
+            <div class="card-content">
+                <span class="tag">${f.color}</span>
+                <img class="face-card-img" src="${f.img}" alt="${f.color}" onerror="this.src='https://picsum.photos/100/100?random=${f.color}'">
+                <h3>${f.title}</h3>
+                <p>${f.desc}</p>
+            </div>
+        </div>
+    `).join('');
+    
+    // 初始化轮播
+    new Swiper('.mySwiper', { 
+        loop: true, 
+        autoplay: { delay: 2500 }, 
+        pagination: { el: '.swiper-pagination', clickable: true }, 
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } 
+    });
+</script>
+</body>
+</html>

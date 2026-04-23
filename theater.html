@@ -1,0 +1,51 @@
+<!-- theater.html - 约·梨园 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梨园幻境 · 约·梨园 | 线下演出与票务</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/new_file.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo"><i class="fas fa-mask"></i> 梨园幻境</div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="visual.html"><i class="fas fa-palette"></i> 赏·国色</a>
+             <a href="audio.html"><i class="fas fa-music"></i> 听·韵事</a> 
+            <a href="game.html"><i class="fas fa-gamepad"></i> 玩·趣魂</a>
+            <a href="knowledge.html"><i class="fas fa-book-open"></i> 知·文脉</a>
+            <a href="theater.html" class="active"><i class="fas fa-ticket-alt"></i> 约·梨园</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h2 class="section-title"><i class="fas fa-calendar-alt"></i> 近期好戏 · 全国演出推荐</h2>
+    <div class="card-grid" id="theaterList"></div>
+    <div class="map-placeholder">
+        <i class="fas fa-map-marked-alt fa-2x"></i>
+        <h3>合作剧院网络</h3>
+        <p>北京梅兰芳大剧院 · 上海天蟾逸夫舞台 · 天津中华剧院 · 杭州运河剧场 · 成都锦江剧场</p>
+        <p><i class="fas fa-plug"></i> 票务API实时对接 | 支持在线选座购票，助力戏曲破圈线下观演</p>
+        <button class="btn" onclick="alert('即将跳转官方票务平台，享受梨园盛宴！')">探索全部演出</button>
+    </div>
+</div>
+<footer><p>约·梨园 | 线下演出票务合作 · 让更多年轻人走进剧场</p></footer>
+<script>
+    const shows = [
+        { name: "《穆桂英挂帅》梅派经典", date: "2025.06.10 19:30", venue: "北京梅兰芳大剧院", price: "180-880" },
+        { name: "京剧名家名段演唱会", date: "2025.06.18 19:15", venue: "上海东方艺术中心", price: "280-1280" },
+        { name: "国潮京剧电音派对·破圈之夜", date: "2025.07.01 20:00", venue: "杭州运河剧场", price: "199-520" },
+        { name: "《锁麟囊》程派传习展演", date: "2025.07.12 14:00", venue: "天津中华剧院", price: "120-380" },
+        { name: "京剧名家折子戏专场", date: "2025.07.20 19:30", venue: "成都锦江剧场", price: "100-580" }
+    ];
+    const theaterContainer = document.getElementById("theaterList");
+    theaterContainer.innerHTML = shows.map(show => `
+        <div class="card"><div class="card-content"><span class="tag"><i class="fas fa-calendar-alt"></i> ${show.date}</span><h3>🎫 ${show.name}</h3><p><i class="fas fa-location-dot"></i> ${show.venue}</p><p>💰 ${show.price}</p><button class="btn" onclick="alert('跳转至官方票务API，完成购票流程。支持线下观演，助力京剧破圈')">立即购票</button></div></div>
+    `).join('');
+</script>
+</body>
+</html>

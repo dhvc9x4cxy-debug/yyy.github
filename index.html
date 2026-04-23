@@ -1,0 +1,365 @@
+<!-- index.html - 首页（30秒听点支持点击暂停） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>梨园幻境 · 首页 | 京剧破圈元宇宙</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/new_file.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo"><i class="fas fa-mask"></i> 梨园幻境</div>
+        <div class="nav-links">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> 首页</a>
+            <a href="visual.html"><i class="fas fa-palette"></i> 赏·国色</a>
+            <a href="audio.html"><i class="fas fa-music"></i> 听·韵事</a>
+            <a href="game.html"><i class="fas fa-gamepad"></i> 玩·趣魂</a>
+            <a href="knowledge.html"><i class="fas fa-book-open"></i> 知·文脉</a>
+            <a href="theater.html"><i class="fas fa-ticket-alt"></i> 约·梨园</a>
+        </div>
+    </div>
+</div>
+
+<main>
+    <!-- 主视觉Banner - 动态视频背景 -->
+    <div class="hero-banner" id="heroBanner">
+        <div class="video-overlay"></div>
+        <div class="gold-particles" id="goldParticles"></div>
+        <div class="hero-banner-content">
+            <div class="hero-text-box">
+                <div class="hero-badge"><i class="fas fa-chart-line"></i> 京剧破圈 · 新媒体时代文化传承新范式</div>
+                <h1 class="hero-title-gradient">京剧破圈元宇宙</h1>
+                <div class="dynamic-calligraphy">
+                    <span class="calligraphy-char">戏</span>
+                    <span class="calligraphy-sub">一梦入梨园，六觉知风雅</span>
+                </div>
+                <button class="btn cta-btn" id="ctaBtn"><i class="fas fa-feather-alt"></i> 开启游园惊梦</button>
+            </div>
+        </div>
+        <video autoplay muted loop playsinline class="hero-video-bg" id="heroVideo">
+            <source src="https://videos.pexels.com/video-files/3042522/3042522-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="container" id="featuredSection">
+        <!-- 精选内容走廊（横向滑动 Swiper） -->
+        <h2 class="section-title"><i class="fas fa-fire"></i> 精选内容走廊 · 此刻风雅</h2>
+        <div class="swiper featuredSwiper">
+            <div class="swiper-wrapper">
+                <!-- 1. 今日名段（带完整欣赏音频） -->
+                <div class="swiper-slide featured-card">
+                    <div class="featured-icon"><i class="fas fa-head-side-vr"></i></div>
+                    <h3>今日名段 · 劝千岁</h3>
+                    <p class="aria-desc">《甘露寺》乔玄劝谏名段，马派经典，潇洒醇厚。</p>
+                    
+                    <!-- 完整欣赏音频播放区域 -->
+                    <div class="audio-player-card" id="fullAriaPlayerCard">
+                        <div class="audio-control" id="playFullAriaBtn">
+                            <i class="fas fa-play-circle"></i> 完整欣赏
+                        </div>
+                        <div class="audio-progress-container" id="fullAudioProgressContainer" style="display: none;">
+                            <div class="audio-progress-bar" id="fullAudioProgressBar"></div>
+                            <div class="audio-time" id="fullAudioTime">0:00 / 0:00</div>
+                        </div>
+                        <audio id="fullAriaAudio" preload="metadata">
+                            <source src="audio/quanjinsui.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    
+                    <!-- 30秒听点语音简介 - 支持点击暂停 -->
+                    <div class="voice-preview" id="voicePreviewBtn">
+                        <i class="fas fa-volume-up"></i> 30秒听点语音简介
+                    </div>
+                </div>
+                <!-- 2. 绝美戏服示意 -->
+                <div class="swiper-slide featured-card">
+                    <div class="featured-icon"><i class="fas fa-crown"></i></div>
+                    <h3>梨园华服 · 珍赏</h3>
+                    <div class="costume-slider-container">
+                        <div class="costume-slider" id="costumeSlider">
+                            <div class="costume-item active" data-img="img/mlfgfzj.jpg" data-modal="img/mlfgfzj.jpg" data-title="贵妃凤冠 · 点翠戏服" data-desc="✨ 梅兰芳《贵妃醉酒》点翠凤冠戏服 ✨">
+                                <img class="costume-thumb" src="img/mlfgfzj.jpg" alt="贵妃凤冠">
+                                <span class="costume-name">贵妃凤冠</span>
+                            </div>
+                            <div class="costume-item" data-img="img/bawangkao.jpg" data-modal="img/bawangkao.jpg" data-title="霸王靠 · 黑金大靠" data-desc="✨ 金少山《霸王别姬》黑金大靠，气势如虹 ✨">
+                                <img class="costume-thumb" src="img/bawangkao.jpg" alt="霸王靠">
+                                <span class="costume-name">霸王靠</span>
+                            </div>
+                            <div class="costume-item" data-img="img/nvmangpao.jpg" data-modal="img/nvmangpao.jpg" data-title="女蟒袍 · 凤穿牡丹" data-desc="✨ 梅派经典《太真外传》凤穿牡丹女蟒袍 ✨">
+                                <img class="costume-thumb" src="img/nvmangpao.jpg" alt="女蟒袍">
+                                <span class="costume-name">女蟒袍</span>
+                            </div>
+                            <div class="costume-item" data-img="img/guanyulvkao.jpg" data-modal="img/guanyulvkao.jpg" data-title="关羽绿靠 · 忠义千秋" data-desc="✨ 红脸绿靠，青龙偃月，关公戏专用 ✨">
+                                <img class="costume-thumb" src="img/guanyulvkao.jpg" alt="关羽绿靠">
+                                <span class="costume-name">关羽绿靠</span>
+                            </div>
+                            <div class="costume-item" data-img="img/lvbzijinguan.jpg" data-modal="img/lvbzijinguan.jpg" data-title="吕布紫金冠 · 雉鸡翎" data-desc="✨ 雉鸡翎紫金冠，《小宴》吕布英姿 ✨">
+                                <img class="costume-thumb" src="img/lvbzijinguan.jpg" alt="吕布紫金冠">
+                                <span class="costume-name">吕布紫金冠</span>
+                            </div>
+                            <div class="costume-item" data-img="img/yujiyulinjia.jpg" data-modal="img/yujiyulinjia.jpg" data-title="虞姬鱼鳞甲 · 剑舞" data-desc="✨ 鱼鳞甲＋如意冠，《霸王别姬》经典扮相 ✨">
+                                <img class="costume-thumb" src="img/yujiyulinjia.jpg" alt="虞姬鱼鳞甲">
+                                <span class="costume-name">虞姬鱼鳞甲</span>
+                            </div>
+                            <div class="costume-item" data-img="img/muguiyingkao.jpg" data-modal="img/muguiyingkao.jpg" data-title="穆桂英靠 · 巾帼挂帅" data-desc="✨ 女靠七星额，《穆柯寨》挂帅英姿 ✨">
+                                <img class="costume-thumb" src="img/muguiyingkao.jpg" alt="穆桂英靠">
+                                <span class="costume-name">穆桂英靠</span>
+                            </div>
+                        </div>
+                        <!-- 左右滑动按钮 -->
+                        <button class="slider-btn slider-prev" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="slider-btn slider-next" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <!-- 当前展示的大图区域（小方形展示） -->
+                    <div class="current-costume-display" id="currentCostumeDisplay" onclick="openImageModal(currentModalImg, currentTitle)">
+                        <img class="current-costume-img" id="currentCostumeImg" src="img/mlfgfzj.jpg" alt="贵妃凤冠">
+                    </div>
+                    <p id="currentCostumeDesc">✨ 梅兰芳《贵妃醉酒》点翠凤冠戏服 ✨<br></p>
+                </div>
+                <!-- 3. 趣味测试入口 -->
+                <div class="swiper-slide featured-card">
+                    <div class="featured-icon"><i class="fas fa-dragon"></i></div>
+                    <h3>梨园大擂台 · 京剧十连问</h3>
+                    <p>每完成一题都会解锁一条京剧冷知识，快来挑战吧！</p>
+                    <button class="btn-small" onclick="location.href='game.html'">立即测试 <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <!-- 4. 节气戏曲日历 -->
+                <div class="swiper-slide featured-card">
+                    <div class="featured-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>节气戏曲日历 · 谷雨</h3>
+                    <p>🌧️ 谷雨时节，推荐应景剧目《白蛇传·断桥》—— 雨丝风片，烟波画船。</p>
+                    <div class="countdown-timer" id="countdownTimer">
+                        距近期重点演出 <span id="daysLeft">0</span> 天
+                    </div>
+                    <button class="btn-small" onclick="alert('近期院线：梅兰芳大剧院《白蛇传》4月25日开演，点击约梨园购票')">查看详情</button>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <!-- 破圈启示录网红区域 -->
+        <h2 class="section-title"><i class="fas fa-star"></i> 破圈启示录 · 京剧网红一览</h2>
+        <div class="card-grid" id="influencerGrid"></div>
+        
+        <!-- 梨园指南区域 -->
+        <h2 class="section-title"><i class="fas fa-compass"></i> 梨园指南 · 从这里开始你的京剧之旅</h2>
+        <div class="guide-box">
+            <div class="guide-content">
+                <ul>
+                    <li><i class="fas fa-palette"></i> <strong>赏·国色</strong> — 行当脸谱，高清戏服图鉴</li>
+                    <li><i class="fas fa-music"></i> <strong>听·韵事</strong> — 经典唱段，一分钟趣味科普</li>
+                    <li><i class="fas fa-gamepad"></i> <strong>玩·趣魂</strong> — 测试京剧人格，知识闯关</li>
+                    <li><i class="fas fa-book-open"></i> <strong>知·文脉</strong> — 京剧历史，名家传承</li>
+                    <li><i class="fas fa-ticket-alt"></i> <strong>约·梨园</strong> — 近期演出，走进剧场</li>
+                </ul>
+                <div class="guide-mascot"><i class="fas fa-mask"></i><p>让传统戏曲成为Z世代的社交货币</p></div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer><p><i class="fas fa-dharmachakra"></i> 梨园幻境 · 让京剧遇见年轻人 | 沉浸式传统文化互动体验平台</p></footer>
+
+<script>
+    // ========== 完整唱段音频播放功能 ==========
+    const fullAudio = document.getElementById('fullAriaAudio');
+    const playFullBtn = document.getElementById('playFullAriaBtn');
+    const fullProgressContainer = document.getElementById('fullAudioProgressContainer');
+    const fullProgressBar = document.getElementById('fullAudioProgressBar');
+    const fullAudioTimeDisplay = document.getElementById('fullAudioTime');
+
+    let isFullPlaying = false;
+
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' + secs : secs}`;
+    }
+
+    function updateFullProgress() {
+        if (fullAudio.duration && !isNaN(fullAudio.duration)) {
+            const percent = (fullAudio.currentTime / fullAudio.duration) * 100;
+            fullProgressBar.style.width = percent + '%';
+            fullAudioTimeDisplay.textContent = `${formatTime(fullAudio.currentTime)} / ${formatTime(fullAudio.duration)}`;
+        }
+    }
+
+    playFullBtn.addEventListener('click', () => {
+        if (!isFullPlaying) {
+            fullAudio.play();
+            isFullPlaying = true;
+            playFullBtn.innerHTML = '<i class="fas fa-pause-circle"></i> 暂停欣赏';
+            fullProgressContainer.style.display = 'block';
+        } else {
+            fullAudio.pause();
+            isFullPlaying = false;
+            playFullBtn.innerHTML = '<i class="fas fa-play-circle"></i> 完整欣赏';
+        }
+    });
+
+    fullAudio.addEventListener('timeupdate', updateFullProgress);
+    fullAudio.addEventListener('ended', () => {
+        isFullPlaying = false;
+        playFullBtn.innerHTML = '<i class="fas fa-play-circle"></i> 完整欣赏';
+        fullProgressBar.style.width = '0%';
+        fullAudioTimeDisplay.textContent = '0:00 / 0:00';
+        fullProgressContainer.style.display = 'none';
+    });
+
+    fullAudio.addEventListener('loadedmetadata', () => {
+        fullAudioTimeDisplay.textContent = `0:00 / ${formatTime(fullAudio.duration)}`;
+    });
+
+    fullAudio.addEventListener('error', (e) => {
+        console.error('完整唱段音频加载失败:', e);
+        playFullBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 音频加载失败';
+        playFullBtn.style.background = '#c2492d';
+    });
+
+    // ========== 30秒听点语音简介 - 支持点击暂停 ==========
+    const voicePreviewBtn = document.getElementById('voicePreviewBtn');
+    let isVoicePlaying = false;
+    let voiceAudio = null;
+
+    // 请将您的30秒听点MP3文件放在 audio 文件夹下
+    const voiceAudioSrc = 'audio/30sec-voice-preview.mp3';
+
+    voicePreviewBtn.addEventListener('click', () => {
+        // 如果正在播放，则暂停
+        if (isVoicePlaying && voiceAudio) {
+            voiceAudio.pause();
+            isVoicePlaying = false;
+            voicePreviewBtn.style.opacity = '1';
+            voicePreviewBtn.innerHTML = '<i class="fas fa-volume-up"></i> 30秒听点语音简介';
+            return;
+        }
+        
+        // 如果已经有音频对象但已暂停，重新播放
+        if (voiceAudio && !isVoicePlaying) {
+            voiceAudio.play();
+            isVoicePlaying = true;
+            voicePreviewBtn.style.opacity = '0.7';
+            voicePreviewBtn.innerHTML = '<i class="fas fa-pause-circle"></i> 暂停播放';
+            return;
+        }
+        
+        // 创建新的音频实例并播放
+        voiceAudio = new Audio(voiceAudioSrc);
+        voiceAudio.play();
+        isVoicePlaying = true;
+        voicePreviewBtn.style.opacity = '0.7';
+        voicePreviewBtn.innerHTML = '<i class="fas fa-pause-circle"></i> 暂停播放';
+        
+        // 播放结束后重置状态
+        voiceAudio.addEventListener('ended', () => {
+            isVoicePlaying = false;
+            voiceAudio = null;
+            voicePreviewBtn.style.opacity = '1';
+            voicePreviewBtn.innerHTML = '<i class="fas fa-volume-up"></i> 30秒听点语音简介';
+        });
+        
+        // 播放出错时的处理
+        voiceAudio.addEventListener('error', (e) => {
+            console.error('30秒听点音频加载失败:', e);
+            alert('30秒听点音频加载失败，请检查音频文件路径是否正确');
+            isVoicePlaying = false;
+            voiceAudio = null;
+            voicePreviewBtn.style.opacity = '1';
+            voicePreviewBtn.innerHTML = '<i class="fas fa-volume-up"></i> 30秒听点语音简介';
+        });
+    });
+
+        // ========== 原有功能 ==========
+        const influencers = [
+            { name: "果小菁", avatar: "img/guoxiaojing.jpg", followers: "620w", desc: "专业京剧演员，戏腔+流行乐引爆国潮" },
+            { name: "王梦婷", avatar: "img/wangmengting.jpg", followers: "380w", desc: "荀派花旦，短视频展示京剧身段之美" },
+            { name: "甄妮刀马旦", avatar: "img/zhennidaomadan.jpg", followers: "252.9w", desc: "54岁刀马旦，烧火棍练功走红，央视报道" },
+            { name: "边靖婷", avatar: "img/bianjingting.jpg", followers: "150.7w", desc: "00后老旦，上戏416女团，戏腔歌曲出圈" }
+        ];
+        document.getElementById("influencerGrid").innerHTML = influencers.map(i => `
+            <div class="card influencer-card"><div class="card-content" style="text-align:center;"><img src="${i.avatar}" class="influencer-avatar"><span class="tag"><i class="fab fa-tiktok"></i> 抖音网红</span><h3>${i.name}</h3><p><i class="fas fa-heart"></i> ${i.followers} 粉丝</p><p>${i.desc}</p></div></div>
+        `).join('');
+
+    new Swiper('.featuredSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+
+    document.getElementById('ctaBtn').addEventListener('click', () => {
+        document.getElementById('featuredSection').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    function updateCountdown() {
+        const targetDate = new Date(new Date().getFullYear(), 3, 25);
+        if (targetDate < new Date()) targetDate.setFullYear(new Date().getFullYear() + 1);
+        const diff = Math.ceil((targetDate - new Date()) / (1000 * 60 * 60 * 24));
+        document.getElementById('daysLeft').innerText = diff >= 0 ? diff : 0;
+    }
+    updateCountdown();
+
+    // 金色粒子效果
+    const canvas = document.createElement('canvas');
+    const particlesDiv = document.getElementById('goldParticles');
+    if (particlesDiv) {
+        canvas.style.position = 'absolute';
+        canvas.style.top = 0;
+        canvas.style.left = 0;
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.pointerEvents = 'none';
+        particlesDiv.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() {
+            canvas.width = particlesDiv.clientWidth;
+            canvas.height = particlesDiv.clientHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        for (let i = 0; i < 80; i++) {
+            particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 3 + 1, alpha: Math.random() * 0.6 + 0.2, speed: 0.5 });
+        }
+        function drawParticles() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(245, 200, 100, ${p.alpha})`;
+                ctx.fill();
+                p.y -= p.speed;
+                if (p.y < 0) p.y = canvas.height;
+            });
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+    }
+
+    const crownHint = document.getElementById('rotateHint');
+    if (crownHint) {
+        crownHint.addEventListener('mousemove', (e) => {
+            const rect = crownHint.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            const crownElem = crownHint.querySelector('.crown-3d');
+            if (crownElem) crownElem.style.transform = `rotateY(${x * 30}deg) rotateX(${y * -15}deg)`;
+        });
+        crownHint.addEventListener('mouseleave', () => {
+            const crownElem = crownHint.querySelector('.crown-3d');
+            if (crownElem) crownElem.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+    }
+</script>
+<script src="js/new_file.js"></script>
+</body>
+</html>
